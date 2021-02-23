@@ -36,7 +36,7 @@ pipeline
      archiveArtifacts artifacts: 'PipelineCC/target/*.jar', followSymlinks: false
      }
      }
-     stage('Deploy to artifactory'){
+     stage('deploy to artifactory'){
         steps{
         rtUpload(
          serverId : 'Artifactory_server',
@@ -44,7 +44,7 @@ pipeline
            "files" :[
            {
            "pattern":"PipelineCC/target/*.jar",
-           "target":"art-doc-devo-loc"
+           "target":"art-doc-dev-loc"
            }
            ]
          }''',
