@@ -15,7 +15,7 @@ pipeline
    }
    stage('Test') {
       steps  {
-          sh 'mvn -f PipelineCC/pom.xml test'
+          sh 'mvn  test'
           echo 'Testing'
        }
     }
