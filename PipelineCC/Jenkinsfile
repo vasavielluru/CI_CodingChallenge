@@ -33,7 +33,7 @@ pipeline
        
     stage('collect artifact'){
      steps{
-     archiveArtifacts artifacts: 'PipelineCCtarget/*.jar', followSymlinks: false
+     archiveArtifacts artifacts: 'PipelineCC/target/*.jar', followSymlinks: false
      }
      }
      stage('Deploy to artifactory'){
