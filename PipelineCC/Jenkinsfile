@@ -9,7 +9,7 @@ pipeline
    stages{
     stage('Build') {
       steps {
-        sh 'mvn -f PipelineCC/pom.xml build'
+        sh 'mvn -f PipelineCC/pom.xml compile'
         echo 'Building'
       }
    }
