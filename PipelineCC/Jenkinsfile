@@ -43,7 +43,7 @@ pipeline
          spec :'''{
            "files" :[
            {
-           "pattern":"target/*.jar",
+           "pattern":"PipelineCC/target/*.jar",
            "target":"art-doc-devo-loc"
            }
            ]
