@@ -1,7 +1,12 @@
 package com.maven.PipelineCC;
 
 public class Calculator {
-
+	public static void main(String[] args)
+	{
+		int a=1,b=2;
+		add(a,b);
+	subtract(a,b);
+	}
 	
 	
 	//no-args constructor
