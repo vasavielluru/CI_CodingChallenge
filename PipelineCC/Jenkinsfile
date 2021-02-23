@@ -9,22 +9,12 @@ pipeline
    stages{
     stage('Build') {
       steps {
-        sh 'mvn -f PipelineCC/pom.xml compile'
+        sh 'mvn -f PipelineCC/pom.xml clean package'
+       
         echo 'Building'
       }
    }
-   stage('Test') {
-      steps  {
-          sh 'mvn -f PipelineCC/pom.xml  test'
-          echo 'Testing'
-       }
-    }
-    stage('install'){
-     steps{
-      sh 'mvn -f PipelineCC/pom.xml clean install'
-     }
-    }
-       stage("Build & SonarQube analysis") {
+    stage("Build & SonarQube analysis") {
             agent any
             steps {
               withSonarQubeEnv('sonarserver') {
@@ -33,6 +23,14 @@ pipeline
               }
             }
           }
+   stage('Test') {
+      steps  {
+          sh 'mvn -f PipelineCC/pom.xml  test'
+          echo 'Testing'
+       }
+    }
+    
+       
     stage('collect artifact'){
      steps{
      archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
