@@ -19,7 +19,31 @@ pipeline
           echo 'Testing'
        }
     }
-    
+       stage("Build & SonarQube analysis") {
+            agent any
+            steps {
+              withSonarQubeEnv('sonarserver') {
+                sh 'java -version'
+                sh 'mvn -f PipelineCC/pom.xml clean package sonar:sonar'
+              }
+            }
+          }
+     stage('Deploy to artifactory'){
+        steps{
+        rtUpload(
+         serverId : 'Artifactory_server',
+         spec :'''{
+           "files" :[
+           {
+           "pattern":"target/*.jar",
+           "target":"art-doc-devo-loc"
+           }
+           ]
+         }''',
+         
+      )
+      }
+     }
     
   }
 }
